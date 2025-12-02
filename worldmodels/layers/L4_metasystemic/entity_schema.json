@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "L4 Metasystemic Entity",
+    "description": "Schema for entities in the Metasystemic layer (geopolitics, governance).",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "polity",
+                "alliance",
+                "legal_framework",
+                "institution"
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "population_size": {
+                    "type": "number"
+                },
+                "territory_area": {
+                    "type": "number"
+                },
+                "governance_type": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "required": [
+        "id",
+        "type"
+    ]
+}

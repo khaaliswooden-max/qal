@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "L2 Cognitive/Cultural Entity",
+    "description": "Schema for entities in the Cognitive and Cultural layer.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "meme",
+                "ritual",
+                "language",
+                "belief_system",
+                "art_style"
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "origin_region": {
+                    "type": "string"
+                },
+                "spread_rate": {
+                    "type": "number"
+                },
+                "core_values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "id",
+        "type"
+    ]
+}
