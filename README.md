@@ -51,6 +51,8 @@ RECONSTRUCT:
 
 See the **[Examples Library](examples/qawm_examples.md)** for concrete applications, from the Bronze Age Collapse to AI Alignment scenarios.
 
+For detailed, step-by-step reconstruction processes, refer to the **[Example Workflows](examples/workflows.md)**.
+
 ## ⚖️ Ethics
 
 Quantum Archeology is a powerful tool. All usage must adhere to the **[Ethical Guardrails](docs/qawm_ethics.md)**, prioritizing:

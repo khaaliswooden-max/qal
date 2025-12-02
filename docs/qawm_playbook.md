@@ -41,6 +41,8 @@ RECONSTRUCT:
 
 ## 3. Workflows
 
+For detailed, scenario-specific examples (e.g., Harappa, Permian Extinction), see **[Example Workflows](../examples/workflows.md)**.
+
 ### Workflow A: Single-System Reconstruction
 
 **Goal**: Reconstruct the history of a specific entity (e.g., a city, a codebase, a species).
