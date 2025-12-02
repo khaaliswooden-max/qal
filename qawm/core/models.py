@@ -38,6 +38,18 @@ class Relation(BaseModel):
     type: RelationType
     weight: float = Field(..., ge=0.0, le=1.0, description="Strength of the relation")
 
+class Claim(BaseModel):
+    """
+    A specific assertion about the past.
+    """
+    subject_id: str
+    predicate: str
+    object_id: Optional[str] = None
+    confidence: Confidence
+    
+    def has_inference_level(self) -> bool:
+        return self.confidence is not None
+
 class WorldState(BaseModel):
     """
     A snapshot or aggregate model of the reconstructed world.
