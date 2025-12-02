@@ -21,3 +21,13 @@
 ## System Architecture
 
 10. **Storage of Probabilistic Histories**: How do we efficiently store a world model that is a superposition of 1000 plausible histories?
+
+## Active Design & Implementation Questions
+
+These questions are critical for the current build phase and inform immediate design decisions:
+
+11. **Optimal Ensemble Size**: How many scenarios are needed for reliable uncertainty quantification?
+12. **Cross-Layer Causal Inference**: How to weight evidence from different layers when they conflict?
+13. **Trace Decay Modeling**: Can we build universal decay curves or must they be domain-specific?
+14. **Counterfactual Stability**: Do small changes in intervention propagate chaotically or predictably?
+15. **Epistemic Label Calibration**: What's the ground-truth accuracy of auto-labeled VERIFIED/PLAUSIBLE/SPECULATIVE claims?
