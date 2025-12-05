@@ -10,8 +10,8 @@ class QAWMEngine:
         
         # Serialize the result
         return {
-            "world_state": rec.world_state.dict(),
-            "claims": [claim.dict() for claim in rec.claims],
+            "world_state": rec.world_state.model_dump(),
+            "claims": [claim.model_dump() for claim in rec.claims],
             "graph_summary": {
                 "nodes": rec.causal_graph.graph.number_of_nodes(),
                 "edges": rec.causal_graph.graph.number_of_edges(),
