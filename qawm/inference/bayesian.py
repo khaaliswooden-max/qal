@@ -11,21 +11,22 @@ class ProbabilisticState(BaseModel):
     distribution: Dict[str, float] 
 
     def normalize(self):
-        total = sum(self.distribution.values())
+        vals = np.array(list(self.distribution.values()), dtype=float)
+        total = vals.sum()
         if total == 0:
             raise ValueError("Distribution sum is 0")
-        for k in self.distribution:
-            self.distribution[k] /= total
+        vals /= total
+        for k, v in zip(self.distribution.keys(), vals.tolist()):
+            self.distribution[k] = v
 
     def entropy(self) -> float:
         """
         Calculate Shannon entropy of the distribution.
+        Vectorized via NumPy for O(n) with minimal Python overhead.
         """
-        ent = 0.0
-        for p in self.distribution.values():
-            if p > 0:
-                ent -= p * np.log2(p)
-        return ent
+        vals = np.array(list(self.distribution.values()), dtype=float)
+        mask = vals > 0
+        return float(-np.sum(vals[mask] * np.log2(vals[mask])))
 
     def get_most_likely(self) -> tuple[str, float]:
         """
@@ -49,17 +50,18 @@ class BeliefUpdater:
             likelihoods: A dict mapping hypothesis (state keys) to P(Evidence|Hypothesis).
                          Missing keys assume a default small likelihood or 0 depending on model.
         """
-        posterior_dist = {}
-        
-        # Calculate unnormalized posterior
-        for hypothesis, prior_prob in prior.distribution.items():
-            likelihood = likelihoods.get(hypothesis, 0.001) # Default to small epsilon if unknown
-            posterior_dist[hypothesis] = prior_prob * likelihood
-            
-        # Create new state and normalize
-        new_state = ProbabilisticState(
+        # Vectorized: compute all unnormalized posteriors in one multiply
+        keys = list(prior.distribution.keys())
+        prior_arr = np.array([prior.distribution[k] for k in keys], dtype=float)
+        likelihood_arr = np.array([likelihoods.get(k, 0.001) for k in keys], dtype=float)
+
+        unnormalized = prior_arr * likelihood_arr
+        total = unnormalized.sum()
+        if total == 0:
+            raise ValueError("Posterior distribution sums to 0; check likelihood values")
+        normalized = unnormalized / total
+
+        return ProbabilisticState(
             variable_id=prior.variable_id,
-            distribution=posterior_dist
+            distribution=dict(zip(keys, normalized.tolist()))
         )
-        new_state.normalize()
-        return new_state

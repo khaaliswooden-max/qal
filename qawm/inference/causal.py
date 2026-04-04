@@ -10,12 +10,19 @@ class CausalGraph:
     """
     def __init__(self):
         self.graph = nx.DiGraph()
+        self._ancestor_cache: dict = {}
+        self._descendant_cache: dict = {}
+
+    def _invalidate_cache(self):
+        self._ancestor_cache.clear()
+        self._descendant_cache.clear()
 
     def add_event(self, event: Event):
         """
         Adds an event to the graph.
         """
         self.graph.add_node(event.id, data=event)
+        self._invalidate_cache()
 
     def add_relation(self, relation: Relation):
         """
@@ -41,25 +48,36 @@ class CausalGraph:
             )
 
         self.graph.add_edge(
-            relation.source_id, 
-            relation.target_id, 
-            type=relation.type, 
+            relation.source_id,
+            relation.target_id,
+            type=relation.type,
             weight=relation.weight
         )
+        self._invalidate_cache()
 
     def get_ancestors(self, event_id: str) -> List[Event]:
         """
         Returns all events that causally influenced the given event.
+        Results are cached; cache is invalidated on any graph mutation.
         """
-        ancestors = nx.ancestors(self.graph, event_id)
-        return [self.graph.nodes[node_id]['data'] for node_id in ancestors]
+        if event_id not in self._ancestor_cache:
+            self._ancestor_cache[event_id] = [
+                self.graph.nodes[nid]['data']
+                for nid in nx.ancestors(self.graph, event_id)
+            ]
+        return self._ancestor_cache[event_id]
 
     def get_descendants(self, event_id: str) -> List[Event]:
         """
         Returns all events caused by the given event.
+        Results are cached; cache is invalidated on any graph mutation.
         """
-        descendants = nx.descendants(self.graph, event_id)
-        return [self.graph.nodes[node_id]['data'] for node_id in descendants]
+        if event_id not in self._descendant_cache:
+            self._descendant_cache[event_id] = [
+                self.graph.nodes[nid]['data']
+                for nid in nx.descendants(self.graph, event_id)
+            ]
+        return self._descendant_cache[event_id]
     
     def check_consistency(self) -> bool:
         """
