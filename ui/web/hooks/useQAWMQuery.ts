@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import * as api from '@/lib/api';
+import { useWorldState } from './useWorldState';
 import type {
   WorldState,
   QueryMode,
@@ -22,6 +23,7 @@ export function useQAWMQuery() {
     loading: false,
     error: null,
   });
+  const { setWorldState } = useWorldState();
 
   async function submit(
     mode: QueryMode,
@@ -38,6 +40,7 @@ export function useQAWMQuery() {
         result = await api.counterfactual(payload as CounterfactualRequest);
       }
       setState({ result, loading: false, error: null });
+      setWorldState(result); // broadcast to shared context + sessionStorage
     } catch (err) {
       setState({
         result: null,
