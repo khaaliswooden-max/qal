@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "L0 Physical/Cosmic Entity",
+    "description": "Schema for entities in the Physical and Cosmic layer (geology, climate, astronomy).",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "geological_formation",
+                "climate_event",
+                "astronomical_object",
+                "resource_deposit"
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "composition": {
+                    "type": "string"
+                },
+                "age_estimate": {
+                    "type": "number"
+                },
+                "magnitude": {
+                    "type": "number"
+                }
+            }
+        }
+    },
+    "required": [
+        "id",
+        "type"
+    ]
+}

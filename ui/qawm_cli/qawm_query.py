@@ -1,0 +1,1 @@
+"""QAWM CLI Query Tool."""

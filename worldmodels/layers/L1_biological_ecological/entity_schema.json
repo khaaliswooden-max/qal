@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "L1 Biological/Ecological Entity",
+    "description": "Schema for entities in the Biological and Ecological layer.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "species",
+                "ecosystem",
+                "genetic_lineage",
+                "pathogen"
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "taxonomy": {
+                    "type": "string"
+                },
+                "population_estimate": {
+                    "type": "number"
+                },
+                "habitat": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "required": [
+        "id",
+        "type"
+    ]
+}

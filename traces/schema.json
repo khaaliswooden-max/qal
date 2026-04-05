@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "QAWM Trace",
+    "description": "A schema for a single informational trace used in Quantum Archeological reconstruction.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the trace (UUID v4 recommended)."
+        },
+        "type": {
+            "type": "string",
+            "description": "The category of the trace (e.g., 'carbon_14', 'textual_record', 'genetic_marker')."
+        },
+        "timestamp": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "number",
+                    "description": "The estimated time value (e.g., year)."
+                },
+                "uncertainty": {
+                    "type": "number",
+                    "description": "Standard deviation or error margin of the timestamp."
+                },
+                "unit": {
+                    "type": "string",
+                    "enum": [
+                        "BP",
+                        "BC",
+                        "AD",
+                        "MYA"
+                    ],
+                    "description": "Time unit (Before Present, Before Christ, Anno Domini, Million Years Ago)."
+                }
+            },
+            "required": [
+                "value",
+                "unit"
+            ]
+        },
+        "location": {
+            "type": "object",
+            "properties": {
+                "latitude": {
+                    "type": "number"
+                },
+                "longitude": {
+                    "type": "number"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "data": {
+            "type": "object",
+            "description": "The raw or processed data payload of the trace.",
+            "additionalProperties": true
+        },
+        "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Confidence score in the authenticity and accuracy of the trace."
+        },
+        "source": {
+            "type": "string",
+            "description": "Citation or origin of the trace data."
+        }
+    },
+    "required": [
+        "id",
+        "type",
+        "timestamp",
+        "data"
+    ]
+}

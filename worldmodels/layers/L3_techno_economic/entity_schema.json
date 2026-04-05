@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "L3 Techno/Economic Entity",
+    "description": "Schema for entities in the Techno-Economic layer.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "technology",
+                "trade_route",
+                "currency",
+                "economic_system",
+                "infrastructure"
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "complexity_level": {
+                    "type": "number"
+                },
+                "resource_requirements": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "adoption_rate": {
+                    "type": "number"
+                }
+            }
+        }
+    },
+    "required": [
+        "id",
+        "type"
+    ]
+}

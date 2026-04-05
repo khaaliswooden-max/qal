@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QAWM Unified Schema",
+  "description": "Schema for Quantum Archeological World Model entities, events, and relations.",
+  "definitions": {
+    "layer": {
+      "type": "string",
+      "enum": ["L0_PHYSICAL", "L1_BIOLOGICAL", "L2_CULTURAL", "L3_TECHNO_ECONOMIC", "L4_METASYSTEMIC"]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["VERIFIED", "PLAUSIBLE", "SPECULATIVE"]
+    },
+    "entity": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "layer": { "$ref": "#/definitions/layer" },
+        "attributes": { "type": "object" },
+        "timespan": {
+          "type": "object",
+          "properties": {
+            "start": { "type": "string", "format": "date-time" },
+            "end": { "type": "string", "format": "date-time" }
+          }
+        }
+      },
+      "required": ["id", "type", "layer"]
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "layer": { "$ref": "#/definitions/layer" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "participants": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/entity" }
+        },
+        "confidence": { "$ref": "#/definitions/confidence" },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["id", "type", "layer", "timestamp", "confidence"]
+    },
+    "relation": {
+      "type": "object",
+      "properties": {
+        "source_id": { "type": "string" },
+        "target_id": { "type": "string" },
+        "type": { "type": "string", "enum": ["INFLUENCES", "TRANSFORMS", "DEPENDS_ON", "EMERGES_FROM", "DESTROYS"] },
+        "weight": { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "required": ["source_id", "target_id", "type"]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "model_id": { "type": "string" },
+    "entities": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/entity" }
+    },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/event" }
+    },
+    "relations": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/relation" }
+    }
+  }
+}
