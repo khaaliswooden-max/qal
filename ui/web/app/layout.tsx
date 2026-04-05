@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import { WorldStateProvider } from './providers';
+import { Sidebar } from '@/components/layout/Sidebar';
 import './globals.css';
 
 const inter = Inter({
@@ -25,7 +27,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-[#0f1117] antialiased">{children}</body>
+      <body className="bg-[#0f1117] antialiased flex min-h-screen">
+        <WorldStateProvider>
+          <Sidebar />
+          <main className="flex-1 min-w-0 overflow-auto">{children}</main>
+        </WorldStateProvider>
+      </body>
     </html>
   );
 }
