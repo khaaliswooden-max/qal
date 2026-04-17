@@ -28,3 +28,69 @@
 [submodule "repos/karpathy/micrograd"]
 	path = repos/karpathy/micrograd
 	url = https://github.com/karpathy/micrograd
+[submodule "repos/tier3-orgs/ppl-ai/api-cookbook"]
+	path = repos/tier3-orgs/ppl-ai/api-cookbook
+	url = https://github.com/ppl-ai/api-cookbook
+[submodule "repos/tier3-orgs/deepseek-ai/DeepSeek-Coder"]
+	path = repos/tier3-orgs/deepseek-ai/DeepSeek-Coder
+	url = https://github.com/deepseek-ai/DeepSeek-Coder
+[submodule "repos/tier3-orgs/deepseek-ai/DeepSeek-MoE"]
+	path = repos/tier3-orgs/deepseek-ai/DeepSeek-MoE
+	url = https://github.com/deepseek-ai/DeepSeek-MoE
+[submodule "repos/tier3-orgs/deepseek-ai/DeepSeek-Math"]
+	path = repos/tier3-orgs/deepseek-ai/DeepSeek-Math
+	url = https://github.com/deepseek-ai/DeepSeek-Math
+[submodule "repos/tier3-orgs/mistralai/mistral-src"]
+	path = repos/tier3-orgs/mistralai/mistral-src
+	url = https://github.com/mistralai/mistral-src
+[submodule "repos/tier3-orgs/mistralai/cookbook"]
+	path = repos/tier3-orgs/mistralai/cookbook
+	url = https://github.com/mistralai/cookbook
+[submodule "repos/tier3-orgs/Stability-AI/stablediffusion"]
+	path = repos/tier3-orgs/Stability-AI/stablediffusion
+	url = https://github.com/Stability-AI/stablediffusion
+[submodule "repos/tier3-orgs/Stability-AI/generative-models"]
+	path = repos/tier3-orgs/Stability-AI/generative-models
+	url = https://github.com/Stability-AI/generative-models
+[submodule "repos/tier3-orgs/Stability-AI/stable-audio-tools"]
+	path = repos/tier3-orgs/Stability-AI/stable-audio-tools
+	url = https://github.com/Stability-AI/stable-audio-tools
+[submodule "repos/tier3-orgs/huggingface/diffusers"]
+	path = repos/tier3-orgs/huggingface/diffusers
+	url = https://github.com/huggingface/diffusers
+[submodule "repos/tier3-orgs/huggingface/accelerate"]
+	path = repos/tier3-orgs/huggingface/accelerate
+	url = https://github.com/huggingface/accelerate
+[submodule "repos/tier3-orgs/huggingface/tokenizers"]
+	path = repos/tier3-orgs/huggingface/tokenizers
+	url = https://github.com/huggingface/tokenizers
+[submodule "repos/tier3-orgs/huggingface/trl"]
+	path = repos/tier3-orgs/huggingface/trl
+	url = https://github.com/huggingface/trl
+[submodule "repos/tier3-orgs/huggingface/smolagents"]
+	path = repos/tier3-orgs/huggingface/smolagents
+	url = https://github.com/huggingface/smolagents
+[submodule "repos/tier3-orgs/langchain-ai/langchain"]
+	path = repos/tier3-orgs/langchain-ai/langchain
+	url = https://github.com/langchain-ai/langchain
+[submodule "repos/tier3-orgs/langchain-ai/langgraph"]
+	path = repos/tier3-orgs/langchain-ai/langgraph
+	url = https://github.com/langchain-ai/langgraph
+[submodule "repos/tier3-orgs/run-llama/llama_index"]
+	path = repos/tier3-orgs/run-llama/llama_index
+	url = https://github.com/run-llama/llama_index
+[submodule "repos/tier3-orgs/databricks/dbrx"]
+	path = repos/tier3-orgs/databricks/dbrx
+	url = https://github.com/databricks/dbrx
+[submodule "repos/tier3-orgs/mlflow/mlflow"]
+	path = repos/tier3-orgs/mlflow/mlflow
+	url = https://github.com/mlflow/mlflow
+[submodule "repos/tier3-orgs/replit/ReplitLM"]
+	path = repos/tier3-orgs/replit/ReplitLM
+	url = https://github.com/replit/ReplitLM
+[submodule "repos/tier3-orgs/EleutherAI/pythia"]
+	path = repos/tier3-orgs/EleutherAI/pythia
+	url = https://github.com/EleutherAI/pythia
+[submodule "repos/tier3-orgs/EleutherAI/the-pile"]
+	path = repos/tier3-orgs/EleutherAI/the-pile
+	url = https://github.com/EleutherAI/the-pile
