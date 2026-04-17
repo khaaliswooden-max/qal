@@ -1,0 +1,30 @@
+[submodule "repos/karpathy/autoresearch"]
+	path = repos/karpathy/autoresearch
+	url = https://github.com/karpathy/autoresearch
+[submodule "repos/karpathy/nanoGPT"]
+	path = repos/karpathy/nanoGPT
+	url = https://github.com/karpathy/nanoGPT
+[submodule "repos/karpathy/nanochat"]
+	path = repos/karpathy/nanochat
+	url = https://github.com/karpathy/nanochat
+[submodule "repos/karpathy/LLM101n"]
+	path = repos/karpathy/LLM101n
+	url = https://github.com/karpathy/LLM101n
+[submodule "repos/karpathy/llm.c"]
+	path = repos/karpathy/llm.c
+	url = https://github.com/karpathy/llm.c
+[submodule "repos/karpathy/minGPT"]
+	path = repos/karpathy/minGPT
+	url = https://github.com/karpathy/minGPT
+[submodule "repos/karpathy/nn-zero-to-hero"]
+	path = repos/karpathy/nn-zero-to-hero
+	url = https://github.com/karpathy/nn-zero-to-hero
+[submodule "repos/karpathy/llama2.c"]
+	path = repos/karpathy/llama2.c
+	url = https://github.com/karpathy/llama2.c
+[submodule "repos/karpathy/llm-council"]
+	path = repos/karpathy/llm-council
+	url = https://github.com/karpathy/llm-council
+[submodule "repos/karpathy/micrograd"]
+	path = repos/karpathy/micrograd
+	url = https://github.com/karpathy/micrograd
